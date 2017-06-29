@@ -6,20 +6,30 @@
 
         <label class="k-form-field">
             <span>First Name</span>
-            <input class="k-textbox" placeholder="Your Name" />
+            <input class="k-textbox" placeholder="Your Name" [(ngModel)]="Name" required />
         </label>
         <label class="k-form-field">
             <span>Last Name</span>
-            <input class="k-textbox" placeholder="Your Last Name" />
+            <input class="k-textbox" placeholder="Your Last Name" [(ngModel)]="LastName" />
         </label>
         <label class="k-form-field">
             <span>Select country</span>
-              <kendo-dropdownlist [data]="source"
+              <kendo-dropdownlist [data]="info"
                   [filterable]="true"
                   (filterChange)="filterChange($event)"
-                  (selectionChange)="selectionChange($event)">
+                  (selectionChange)="selectionChange($event)"
+                  [(ngModel)]="Test">
               </kendo-dropdownlist>
         </label>
+
+        <label class="k-form-field">
+            <span>Important</span>
+                <kendo-switch
+                    [(ngModel)]="IsImportant"
+                ></kendo-switch>
+        </label>
+
+
     </fieldset>
     <div>
       <button kendoButton (click)="onSaveClick()" [primary]="true">My Kendo UI Button</button>

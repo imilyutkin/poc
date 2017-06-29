@@ -10,6 +10,11 @@ export class AppComponent {
     source: string[] = ['One', 'Two', 'Three'];
     info: string[];
     public events: string[] = [];
+    public IsImportant = false;
+    public Test: string;
+    public LastName: string;
+    public Name: string;
+
 
     constructor() {
       this.info = this.source.slice();
@@ -17,6 +22,10 @@ export class AppComponent {
 
     onSaveClick() {
         this.title = 'Save';
+        console.log(this.Name);
+        console.log(this.LastName);
+        console.log(this.Test);
+        console.log(this.IsImportant);
     }
 
     onCancelClick() {
