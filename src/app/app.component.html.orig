@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+
+<form class="k-form" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+    <fieldset>
+        <legend>User Details</legend>
+
+        <label class="k-form-field">
+            <span>First Name</span>
+<<<<<<< HEAD
+            <input class="k-textbox" placeholder="Your Name" formControlName="Name"/>
+        </label>
+        <label class="k-form-field">
+            <span>Last Name</span>
+            <input class="k-textbox" placeholder="Your Last Name" formControlName="LastName" />
+=======
+            <input class="k-textbox" placeholder="Your Name" />
+        </label>
+        <label class="k-form-field">
+            <span>Last Name</span>
+            <input class="k-textbox" placeholder="Your Last Name" />
+>>>>>>> parent of adfc95d... added some functionality doesn't work
+        </label>
+        <label class="k-form-field">
+            <span>Select country</span>
+              <kendo-dropdownlist [data]="source"
+                  [filterable]="true"
+                  (filterChange)="filterChange($event)"
+<<<<<<< HEAD
+                  (selectionChange)="selectionChange($event)"
+                    [textField]="'Name'"
+                    [valueField]="'Id'"
+                  formControlName="Country">
+=======
+                  (selectionChange)="selectionChange($event)">
+>>>>>>> parent of adfc95d... added some functionality doesn't work
+              </kendo-dropdownlist>
+        </label>
+    </fieldset>
+    <div>
+      <button type="submit" kendoButton [primary]=true [disabled]="!myForm.valid">Submit</button>
+    </div>
+</form>
