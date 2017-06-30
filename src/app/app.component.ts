@@ -17,7 +17,9 @@ export class AppComponent {
         this.myForm = this._fb.group({
             Name: ['', [Validators.required, Validators.minLength(5)]],
             LastName: ['', [Validators.required, Validators.minLength(5)]],
-            Country: [{}, [Validators.required]]
+            Country: [{}, [Validators.required]],
+            Age: [0, [Validators.required]],
+            IsMoodGood: [false]
         });
     }
 
@@ -37,7 +39,9 @@ export class AppComponent {
 interface Person {
     Name: string;
     LastName: string;
-    Country: string;
+    Country: Country;
+    Age: number;
+    IsMoodGood: boolean;
 }
 interface Country {
     Id: number;

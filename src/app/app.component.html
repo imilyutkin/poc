@@ -23,6 +23,23 @@
                   formControlName="Country">
               </kendo-dropdownlist>
         </label>
+
+        <label class="k-form-field">
+            <span>Age</span>
+            <kendo-numerictextbox
+                [min]="0" [max]="100" [autoCorrect]=false formControlName="Age">
+            </kendo-numerictextbox>
+        </label>
+
+
+        <label class="k-form-field">
+            <span>Good Mood</span>
+            <kendo-switch
+                formControlName="IsMoodGood"
+                [onLabel]="'YES'"
+                [offLabel]="'NO'"
+            ></kendo-switch>
+        </label>
     </fieldset>
     <div>
       <button type="submit" kendoButton [primary]=true [disabled]="!myForm.valid">Submit</button>

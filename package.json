@@ -24,8 +24,11 @@
     "@progress/kendo-angular-buttons": "^1.0.5",
     "@progress/kendo-angular-dropdowns": "^1.1.1",
     "@progress/kendo-angular-inputs": "^1.0.6",
+    "@progress/kendo-angular-intl": "^1.2.1",
     "@progress/kendo-angular-l10n": "^1.0.2",
     "@progress/kendo-theme-default": "^2.38.0",
+    "@telerik/kendo-intl": "^1.2.0",
+    "cldr-data": "^31.0.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"

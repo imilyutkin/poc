@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { InputsModule } from '@progress/kendo-angular-inputs';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
         // Register the modules
         BrowserAnimationsModule,
         ButtonsModule,
-        DropDownsModule
+        DropDownsModule,
+        InputsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
