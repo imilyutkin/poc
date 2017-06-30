@@ -8,11 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Import the Animations module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Import the ButtonsModule
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { InputsModule } from '@progress/kendo-angular-inputs';
-import { GridModule } from '@progress/kendo-angular-grid';
 
 @NgModule({
     declarations: [
@@ -27,9 +24,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
         // Register the modules
         BrowserAnimationsModule,
         ButtonsModule,
-        DropDownsModule,
-        GridModule,
-        InputsModule
+        DropDownsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
