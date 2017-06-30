@@ -40,6 +40,14 @@
                 [offLabel]="'NO'"
             ></kendo-switch>
         </label>
+
+        <kendo-upload required
+            [restrictions]="myRestrictions"
+            [autoUpload]="false"
+            formControlName="Files"
+            (upload)="uploadEventHandler($event)">
+          </kendo-upload>
+
     </fieldset>
     <div>
       <button type="submit" kendoButton [primary]=true [disabled]="!myForm.valid">Submit</button>

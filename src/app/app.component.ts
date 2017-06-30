@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FileInfo, FileRestrictions } from '@progress/kendo-angular-upload';
 
 @Component({
     selector: 'app-root',
@@ -11,6 +12,14 @@ export class AppComponent {
     public source: Country[] = [{Id: 1, Name: 'One'}, {Id: 2, Name: 'Two'}, {Id: 3, Name: 'Three'}];
     public info: Country[];
     public myForm: FormGroup;
+    uploadSaveUrl = 'saveUrl';
+    uploadRemoveUrl = 'removeUrl';
+    public userName: string;
+    public userImages: Array<FileInfo>;
+
+    public myRestrictions: FileRestrictions = {
+        allowedExtensions: ['jpg', 'jpeg', 'png']
+    };
 
     constructor(private _fb: FormBuilder) {
         this.info = this.source.slice();
@@ -19,7 +28,8 @@ export class AppComponent {
             LastName: ['', [Validators.required, Validators.minLength(5)]],
             Country: [{}, [Validators.required]],
             Age: [0, [Validators.required]],
-            IsMoodGood: [false]
+            IsMoodGood: [false],
+            Files: []
         });
     }
 
@@ -34,6 +44,13 @@ export class AppComponent {
     save(model: FormGroup) {
         // call API to save customerS
         console.log(model.value);
+    }
+
+    uploadEventHandler($event) {
+        debugger;
+        console.log($event);
+        const file: any = $event.files[0].rawFile;
+        console.log(file);
     }
 }
 interface Person {

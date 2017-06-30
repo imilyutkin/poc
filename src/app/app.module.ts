@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { UploadModule } from '@progress/kendo-angular-upload';
+
 
 @NgModule({
     declarations: [
@@ -26,7 +28,8 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
         BrowserAnimationsModule,
         ButtonsModule,
         DropDownsModule,
-        InputsModule
+        InputsModule,
+        UploadModule
     ],
     providers: [],
     bootstrap: [AppComponent]
