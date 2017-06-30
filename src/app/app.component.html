@@ -1,28 +1,30 @@
 <h1>{{title}}</h1>
 
-<form class="k-form">
+<form class="k-form" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
     <fieldset>
         <legend>User Details</legend>
 
         <label class="k-form-field">
             <span>First Name</span>
-            <input class="k-textbox" placeholder="Your Name" />
+            <input class="k-textbox" placeholder="Your Name" formControlName="Name"/>
         </label>
         <label class="k-form-field">
             <span>Last Name</span>
-            <input class="k-textbox" placeholder="Your Last Name" />
+            <input class="k-textbox" placeholder="Your Last Name" formControlName="LastName" />
         </label>
         <label class="k-form-field">
             <span>Select country</span>
-              <kendo-dropdownlist [data]="source"
+              <kendo-dropdownlist [data]="info"
                   [filterable]="true"
                   (filterChange)="filterChange($event)"
-                  (selectionChange)="selectionChange($event)">
+                  (selectionChange)="selectionChange($event)"
+                    [textField]="'Name'"
+                    [valueField]="'Id'"
+                  formControlName="Country">
               </kendo-dropdownlist>
         </label>
     </fieldset>
     <div>
-      <button kendoButton (click)="onSaveClick()" [primary]="true">My Kendo UI Button</button>
-      <button kendoButton (click)="onCancelClick()">Cancel</button>
+      <button type="submit" kendoButton [primary]=true [disabled]="!myForm.valid">Submit</button>
     </div>
 </form>
