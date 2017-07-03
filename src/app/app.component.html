@@ -1,55 +1,134 @@
-<h1>{{title}}</h1>
+<div class="form-container">
+    <form class="k-form" [formGroup]="gcForm" novalidate (ngSubmit)="save(gcForm)">
+        <fieldset>
+            <legend>GC Details</legend>
 
-<form class="k-form" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-    <fieldset>
-        <legend>User Details</legend>
+            <label class="k-form-field">
+                <span>Дата составления</span>
+                <kendo-datepicker
+                    formControlName="Created"
+                    format="dd\MM\yyyy"
+                ></kendo-datepicker>
+            </label>   
 
-        <label class="k-form-field">
-            <span>First Name</span>
-            <input class="k-textbox" placeholder="Your Name" formControlName="Name"/>
-        </label>
-        <label class="k-form-field">
-            <span>Last Name</span>
-            <input class="k-textbox" placeholder="Your Last Name" formControlName="LastName" />
-        </label>
-        <label class="k-form-field">
-            <span>Select country</span>
-              <kendo-dropdownlist [data]="info"
-                  [filterable]="true"
-                  (filterChange)="filterChange($event)"
-                  (selectionChange)="selectionChange($event)"
-                    [textField]="'Name'"
-                    [valueField]="'Id'"
-                  formControlName="Country">
-              </kendo-dropdownlist>
-        </label>
+            <label class="k-form-field">
+                <span>Составлена</span>
+                <input class="k-textbox" placeholder="Введите значение" formControlName="Reporter"/>
+            </label>
+            
+            <label class="k-form-field">
+                <span>Контакты составителя</span>
+                <input class="k-textbox" placeholder="Введите значение" formControlName="ReporterContacts"/>
+            </label>
 
-        <label class="k-form-field">
-            <span>Age</span>
-            <kendo-numerictextbox
-                [min]="0" [max]="100" [autoCorrect]=false formControlName="Age">
-            </kendo-numerictextbox>
-        </label>
+            <label class="k-form-field">
+                <span>Отдел составителя</span>
+                <kendo-autocomplete [data]="info"
+                    [filterable]="true"
+                    (filterChange)="filterChange($event)"
+                    formControlName="ReporterDepartment"
+                    [valueField]="'Name'"
+                >
+                </kendo-autocomplete>
+            </label>
+            
+            <label class="k-form-field">
+                <span>Компания составителя</span>
+                <kendo-autocomplete [data]="info"
+                    [filterable]="true"
+                    (filterChange)="filterChange($event)"
+                    formControlName="ReporterCompany"
+                    [valueField]="'Name'"
+                >
+                </kendo-autocomplete>
+            </label>
+            
+            <label class="k-form-field">
+                <span>Объект</span>
+                <kendo-autocomplete [data]="info"
+                    [filterable]="true"
+                    (filterChange)="filterChange($event)"
+                    formControlName="Object"
+                    [valueField]="'Name'"
+                >
+                </kendo-autocomplete>
+            </label>            
 
+            <label class="k-form-field">
+                <span>Точное местонахождение</span>
+                <input class="k-textbox" placeholder="Введите значение" formControlName="Location"/>
+            </label>
+            
+            <label class="k-form-field">
+                <span>Задействованная компания</span>
+                <kendo-autocomplete [data]="info"
+                    [filterable]="true"
+                    (filterChange)="filterChange($event)"
+                    formControlName="InvolvedCompany"
+                    [valueField]="'Name'"
+                >
+                </kendo-autocomplete>
+            </label>           
 
-        <label class="k-form-field">
-            <span>Good Mood</span>
-            <kendo-switch
-                formControlName="IsMoodGood"
-                [onLabel]="'YES'"
-                [offLabel]="'NO'"
-            ></kendo-switch>
-        </label>
+            <div class="k-form-field">
+                <input type="checkbox" id="ch1" class="k-checkbox" formControlName="IsPeopleDo" />
+                <label class="k-checkbox-label" for="ch1">Действия людей</label>
+            </div>
+            
+            <div class="k-form-field">
+                <input type="radio" name="Behaviour" id="radio1" class="k-radio" value="Danger" formControlName="Behaviour" />
+                <label class="k-radio-label" for="radio1">Опасное</label>
 
-        <kendo-upload required
-            [restrictions]="myRestrictions"
-            [autoUpload]="false"
-            formControlName="Files"
-            (upload)="uploadEventHandler($event)">
-          </kendo-upload>
+                <input type="radio" name="Behaviour" id="radio2" class="k-radio" value="Safe" formControlName="Behaviour" />
+                <label class="k-radio-label" for="radio2">Безопасное</label>
 
-    </fieldset>
-    <div>
-      <button type="submit" kendoButton [primary]=true [disabled]="!myForm.valid">Submit</button>
-    </div>
-</form>
+                <input type="radio" name="Behaviour" class="k-radio" id="radio3"  value="Excelent" formControlName="Behaviour" />
+                <label class="k-radio-label" for="radio3">Образцовое</label>
+            </div>               
+
+            <div class="k-form-field">
+                <input type="checkbox" id="ch2" class="k-checkbox" formControlName="IsToolsEquip" />
+                <label class="k-checkbox-label" for="ch2">Инструменты и оборудование</label>
+            </div>     
+
+            <div class="k-form-field">
+                <input type="checkbox" id="ch3" class="k-checkbox" formControlName="IsPeopleRest" />
+                <label class="k-checkbox-label"  for="ch3">Условия труда и отдыха</label>
+            </div>     
+
+            <div class="k-form-field">
+                <input type="checkbox" id="ch4" class="k-checkbox" formControlName="IsEnvironment" />
+                <label class="k-checkbox-label" for="ch4">Окружающая среда</label>
+            </div>
+            
+            
+            <label class="k-form-field">
+                <span>Краткое описание</span>
+                <textarea class="k-textarea" formControlName="Description">
+                
+                </textarea>
+            </label>  
+
+            
+            <label class="k-form-field">
+                <span>Предпринятые действия</span>
+                <textarea class="k-textarea" formControlName="Actions">
+                
+                </textarea>
+            </label>  
+
+            <label class="k-form-field">
+                <span>Требуются дополнительные действия</span>
+                <kendo-switch
+                    formControlName="NeedAdditionalAction"
+                    [onLabel]="'YES'"
+                    [offLabel]="'NO'"
+                ></kendo-switch>
+            </label>
+
+        </fieldset>
+        <div>
+        <button type="submit" kendoButton [primary]=true [disabled]="!gcForm.valid">Submit</button>
+        </div>
+    </form>
+</div>

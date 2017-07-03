@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { FileInfo, FileRestrictions } from '@progress/kendo-angular-upload';
+import { Validators, FormGroup, FormControl, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -8,29 +7,30 @@ import { FileInfo, FileRestrictions } from '@progress/kendo-angular-upload';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    public title = 'Hello World!';
     public source: Country[] = [{Id: 1, Name: 'One'}, {Id: 2, Name: 'Two'}, {Id: 3, Name: 'Three'}];
     public info: Country[];
-    public myForm: FormGroup;
-    uploadSaveUrl = 'saveUrl';
-    uploadRemoveUrl = 'removeUrl';
-    public userName: string;
-    public userImages: Array<FileInfo>;
-
-    public myRestrictions: FileRestrictions = {
-        allowedExtensions: ['jpg', 'jpeg', 'png']
-    };
+    public gcForm: FormGroup;
 
     constructor(private _fb: FormBuilder) {
         this.info = this.source.slice();
-        this.myForm = this._fb.group({
-            Name: ['', [Validators.required, Validators.minLength(5)]],
-            LastName: ['', [Validators.required, Validators.minLength(5)]],
-            Country: [{}, [Validators.required]],
-            Age: [0, [Validators.required]],
-            IsMoodGood: [false],
-            Files: []
-        });
+        this.gcForm = this._fb.group({
+            Created: ['', [Validators.required]],
+            Reporter: ['ITRANSITION\\i.milyutkin', [Validators.required]],
+            ReporterContacts: ['', []],
+            ReporterDepartment: ['', [Validators.required]],
+            ReporterCompany: ['', []],
+            Object: ['', [Validators.required]],
+            Location: ['', []],
+            InvolvedCompany: ['', [Validators.required]],
+            IsPeopleDo: [false, []],
+            IsToolsEquip: [false, []],
+            IsPeopleRest: [false, []],
+            IsEnvironment: [false, []],
+            Description: ['', [Validators.required]],
+            Actions: ['', []],
+            Behaviour: ['', []],
+            NeedAdditionalAction: [false]
+        }, { validator: this.shouldBeCheckedRadio });
     }
 
     public selectionChange(value: Country): void {
@@ -42,23 +42,21 @@ export class AppComponent {
     }
 
     save(model: FormGroup) {
-        // call API to save customerS
         console.log(model.value);
     }
 
-    uploadEventHandler($event) {
-        debugger;
-        console.log($event);
-        const file: any = $event.files[0].rawFile;
-        console.log(file);
+    shouldBeCheckedRadio(form: AbstractControl): any {
+        if (form.get('IsPeopleDo')) {
+            if (!form.get('Behaviour')) {
+                return {
+                    validateBehaviour: {
+                        valid: false
+                    }
+                };
+            }
+        }
+        return null;
     }
-}
-interface Person {
-    Name: string;
-    LastName: string;
-    Country: Country;
-    Age: number;
-    IsMoodGood: boolean;
 }
 interface Country {
     Id: number;

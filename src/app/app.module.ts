@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-import { UploadModule } from '@progress/kendo-angular-upload';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 
 @NgModule({
@@ -23,13 +23,11 @@ import { UploadModule } from '@progress/kendo-angular-upload';
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
-
-        // Register the modules
         BrowserAnimationsModule,
         ButtonsModule,
         DropDownsModule,
         InputsModule,
-        UploadModule
+        DateInputsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
