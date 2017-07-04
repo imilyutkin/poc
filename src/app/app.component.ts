@@ -30,7 +30,7 @@ export class AppComponent {
             Actions: ['', []],
             Behaviour: ['', []],
             NeedAdditionalAction: [false]
-        }, { validator: this.shouldBeCheckedRadio });
+        }, { validator: this.validateGreenCardForm });
     }
 
     public selectionChange(value: Country): void {
@@ -45,11 +45,20 @@ export class AppComponent {
         console.log(model.value);
     }
 
-    shouldBeCheckedRadio(form: AbstractControl): any {
-        if (form.get('IsPeopleDo')) {
-            if (!form.get('Behaviour')) {
+    validateGreenCardForm(form: FormGroup): any {
+        if (form.controls.IsPeopleDo.value) {
+            if (!form.controls.Behaviour.value) {
                 return {
                     validateBehaviour: {
+                        valid: false
+                    }
+                };
+            }
+        }
+        if (form.controls.NeedAdditionalAction.value) {
+            if (!form.controls.Actions.value) {
+                return {
+                    validateActions: {
                         valid: false
                     }
                 };
