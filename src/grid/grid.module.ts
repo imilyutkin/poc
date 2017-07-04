@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { GridComponent } from './grid/grid.component';
-import { GridModule } from '@progress/kendo-angular-grid';
+import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 
 @NgModule({
     declarations: [
@@ -11,7 +11,8 @@ import { GridModule } from '@progress/kendo-angular-grid';
     imports: [
         BrowserModule,
         HttpModule,
-        GridModule
+        GridModule,
+        ExcelModule
     ],
     providers: [],
     bootstrap: [GridComponent]
