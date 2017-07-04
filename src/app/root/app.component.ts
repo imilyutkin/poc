@@ -33,10 +33,6 @@ export class AppComponent {
         }, { validator: this.validateGreenCardForm });
     }
 
-    public selectionChange(value: Country): void {
-      console.log(value);
-    }
-
     public filterChange(filter: any): void {
         this.info = this.source.filter((s) => s.Name.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
     }
